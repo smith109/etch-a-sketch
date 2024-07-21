@@ -1,6 +1,8 @@
 const gridContainer = document.querySelector('.grid-container');
+const resizeGridBtn = document.querySelector('.resize-btn');
 
 gridContainer.addEventListener('mouseover', changeSquareColor);
+resizeGridBtn.addEventListener('click', changeGridSize);
 
 function createGrid(columns, rows) {
   for (let i = 0; i < columns; i++) {
@@ -20,6 +22,21 @@ function changeSquareColor(event) {
   if (target.classList.contains('row')) {
     target.style.backgroundColor = '#333333';
   }
+}
+
+function changeGridSize() {
+  const input = prompt('Enter the number of squares per side (max 100)', 16);
+  if (!input) return;
+
+  const gridSize = Number(input);
+
+  if (isNaN(gridSize) || gridSize <= 0 || gridSize > 100) {
+    alert('Please enter a number from 1 to 100');
+    return;
+  }
+
+  gridContainer.replaceChildren();
+  createGrid(gridSize, gridSize);
 }
 
 createGrid(16, 16);

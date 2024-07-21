@@ -1,5 +1,7 @@
 const gridContainer = document.querySelector('.grid-container');
 
+gridContainer.addEventListener('mouseover', changeSquareColor);
+
 function createGrid(columns, rows) {
   for (let i = 0; i < columns; i++) {
     const columnDiv = document.createElement('div');
@@ -10,6 +12,13 @@ function createGrid(columns, rows) {
       columnDiv.appendChild(rowDiv);
       gridContainer.appendChild(columnDiv);
     }
+  }
+}
+
+function changeSquareColor(event) {
+  const target = event.target;
+  if (target.classList.contains('row')) {
+    target.style.backgroundColor = '#333333';
   }
 }
 

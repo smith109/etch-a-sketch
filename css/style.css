@@ -20,6 +20,23 @@ h1 {
   font-size: 40px;
 }
 
+button {
+  background: #34373d;
+  color: #faf7f2;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 150px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #201e23;
+  color: #fbfafa;
+}
+
 div.grid-container {
   height: 600px;
   width: 600px;

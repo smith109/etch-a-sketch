@@ -39,4 +39,15 @@ function changeGridSize() {
   createGrid(gridSize, gridSize);
 }
 
+function generateRandomColor() {
+  const HEX_VALUES = '0123456789ABCDEF';
+  let color = '#';
+
+  for (let i = 0; i < 6; i++) {
+    color += HEX_VALUES[Math.floor(Math.random() * 16)];
+  }
+
+  return color;
+}
+
 createGrid(16, 16);

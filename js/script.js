@@ -1,8 +1,11 @@
 const gridContainer = document.querySelector('.grid-container');
 const resizeGridBtn = document.querySelector('.resize-btn');
+const btnContainer = document.querySelector('.btn-container');
+let penColor = 'black';
 
 gridContainer.addEventListener('mouseover', changeSquareColor);
 resizeGridBtn.addEventListener('click', changeGridSize);
+btnContainer.addEventListener('click', changePenColor);
 
 function createGrid(columns, rows) {
   for (let i = 0; i < columns; i++) {
@@ -59,6 +62,24 @@ function changeOpacity(target) {
   const currentOpacity = target.style.opacity;
   if (currentOpacity > 1) return;
   target.style.opacity = Number(currentOpacity) + 0.1;
+}
+
+function changePenColor(event) {
+  const target = event.target;
+  if (target.tagName !== 'BUTTON') return;
+
+  if (target.classList.contains('black-btn')) {
+    penColor = 'black';
+  }
+  if (target.classList.contains('rainbow-btn')) {
+    penColor = 'rainbow';
+  }
+  if (target.classList.contains('shader-btn')) {
+    penColor = 'shader';
+  }
+  if (target.classList.contains('eraser-btn')) {
+    penColor = 'white';
+  }
 }
 
 createGrid(16, 16);

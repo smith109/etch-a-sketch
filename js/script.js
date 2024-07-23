@@ -22,8 +22,21 @@ function createGrid(columns, rows) {
 
 function changeSquareColor(event) {
   const target = event.target;
-  if (target.classList.contains('row')) {
-    changeBackgroundColor(target, '#333333');
+  if (!target.classList.contains('row')) return;
+
+  switch (penColor) {
+    case 'black':
+      changeBackgroundColor(target, '#333333');
+      break;
+    case 'rainbow':
+      changeBackgroundColor(target, generateRandomColor());
+      break;
+    case 'shader':
+      changeOpacity(target);
+      break;
+    case 'white':
+      changeBackgroundColor(target, '#f7f5f5');
+      break;
   }
 }
 

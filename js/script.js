@@ -20,7 +20,7 @@ function createGrid(columns, rows) {
 function changeSquareColor(event) {
   const target = event.target;
   if (target.classList.contains('row')) {
-    target.style.backgroundColor = '#333333';
+    changeBackgroundColor(target, '#333333');
   }
 }
 
@@ -48,6 +48,10 @@ function generateRandomColor() {
   }
 
   return color;
+}
+
+function changeBackgroundColor(target, color) {
+  target.style.backgroundColor = color;
 }
 
 function changeOpacity(target) {

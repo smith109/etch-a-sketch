@@ -50,4 +50,11 @@ function generateRandomColor() {
   return color;
 }
 
+function changeOpacity(target) {
+  target.style.backgroundColor = '#333333';
+  const currentOpacity = target.style.opacity;
+  if (currentOpacity > 1) return;
+  target.style.opacity = Number(currentOpacity) + 0.1;
+}
+
 createGrid(16, 16);

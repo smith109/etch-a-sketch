@@ -80,6 +80,7 @@ function changeOpacity(target) {
 function changePenColor(event) {
   const target = event.target;
   if (target.tagName !== 'BUTTON') return;
+  toggleActiveClass(target);
 
   if (target.classList.contains('black-btn')) {
     penColor = 'black';
@@ -93,6 +94,12 @@ function changePenColor(event) {
   if (target.classList.contains('eraser-btn')) {
     penColor = 'white';
   }
+}
+
+function toggleActiveClass(target) {
+  const activeElement = document.querySelector('.active');
+  activeElement.classList.remove('active');
+  target.classList.add('active');
 }
 
 createGrid(16, 16);

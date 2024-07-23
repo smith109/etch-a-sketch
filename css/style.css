@@ -32,6 +32,16 @@ button {
   cursor: pointer;
 }
 
+.btn-container button {
+  width: 125px;
+  margin-right: 16px;
+}
+
+.btn-container .active {
+  background: #940202db;
+  color: #ffffff;
+}
+
 button:hover {
   background: #201e23;
   color: #fbfafa;

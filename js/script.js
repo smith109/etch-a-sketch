@@ -67,6 +67,7 @@ function generateRandomColor() {
 }
 
 function changeBackgroundColor(target, color) {
+  target.style.opacity = '';
   target.style.backgroundColor = color;
 }
 

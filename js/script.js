@@ -32,7 +32,7 @@ function changeSquareColor(event) {
       changeBackgroundColor(target, generateRandomColor());
       break;
     case 'shader':
-      changeOpacity(target);
+      changeOpacity(target, 0.1);
       break;
     case 'white':
       changeBackgroundColor(target, '#f7f5f5');
@@ -71,11 +71,17 @@ function changeBackgroundColor(target, color) {
   target.style.backgroundColor = color;
 }
 
-function changeOpacity(target) {
+function changeOpacity(target, value) {
+  let currentOpacity = target.style.opacity;
+
+  if (currentOpacity < 0) {
+    currentOpacity = 0;
+  } else if (currentOpacity > 1) {
+    currentOpacity = 1;
+  }
+
   target.style.backgroundColor = '#333333';
-  const currentOpacity = target.style.opacity;
-  if (currentOpacity > 1) return;
-  target.style.opacity = Number(currentOpacity) + 0.1;
+  target.style.opacity = Number(currentOpacity) + value;
 }
 
 function changePenColor(event) {

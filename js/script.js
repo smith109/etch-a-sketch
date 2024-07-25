@@ -24,19 +24,10 @@ function changeSquareColor(event) {
   const target = event.target;
   if (!target.classList.contains('row')) return;
 
-  switch (penColor) {
-    case 'black':
-      changeBackgroundColor(target, '#333333');
-      break;
-    case 'rainbow':
-      changeBackgroundColor(target, generateRandomColor());
-      break;
-    case 'shader':
-      changeOpacity(target, 0.1);
-      break;
-    case 'white':
-      changeBackgroundColor(target, '#f7f5f5');
-      break;
+  if (event.shiftKey && penColor === 'shader') {
+    changeOpacity(target, -0.1);
+  } else {
+    getPenColor(target);
   }
 }
 
@@ -100,6 +91,23 @@ function changePenColor(event) {
   }
   if (target.classList.contains('eraser-btn')) {
     penColor = 'white';
+  }
+}
+
+function getPenColor(target) {
+  switch (penColor) {
+    case 'black':
+      changeBackgroundColor(target, '#333333');
+      break;
+    case 'rainbow':
+      changeBackgroundColor(target, generateRandomColor());
+      break;
+    case 'shader':
+      changeOpacity(target, 0.1);
+      break;
+    case 'white':
+      changeBackgroundColor(target, '#f7f5f5');
+      break;
   }
 }
 

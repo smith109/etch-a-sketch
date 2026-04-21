@@ -2,3 +2,20 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+div.grid-container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+}
+
+.grid-container .column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-container .row {
+  flex: 1;
+  border: 1px solid #333;
+}

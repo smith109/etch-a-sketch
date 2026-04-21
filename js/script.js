@@ -21,7 +21,8 @@ function createGridSquares(columns, rows) {
 function changeSquareColor(e) {
   const target = e.target;
   const COLOR_BLACK = 'rgb(0,0,0)';
-
+  
+  if (!target.classList.contains('row')) return;
   target.style.backgroundColor = COLOR_BLACK;
 }
 

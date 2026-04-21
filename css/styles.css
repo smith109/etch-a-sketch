@@ -3,10 +3,34 @@
   box-sizing: border-box;
 }
 
+body {
+  text-align: center;
+  background-color: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  margin: 16px 0;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  background: #11b8b8;
+}
+
 div.grid-container {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   display: flex;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
 }
 
 .grid-container .column {
@@ -17,5 +41,4 @@ div.grid-container {
 
 .grid-container .row {
   flex: 1;
-  border: 1px solid #333;
 }

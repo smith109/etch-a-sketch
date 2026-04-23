@@ -4,6 +4,14 @@ const gridResizeBtn = document.querySelector('.resize-btn');
 gridContainer.addEventListener('mouseover', changeSquareColor);
 gridResizeBtn.addEventListener('click', changeGridSize);
 
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  const rgb = `rgb(${r},${g},${b})`;
+  return rgb;
+}
+
 function createGridSquares(columns, rows) {
   for (let i = 0; i < columns; i++) {
     const columnDiv = document.createElement('div');

@@ -1,8 +1,11 @@
 const gridContainer = document.querySelector('.grid-container');
 const gridResizeBtn = document.querySelector('.resize-btn');
+const btnContainer = document.querySelector('.btn-container');
+let currentColor = 'black';
 
 gridContainer.addEventListener('mouseover', changeSquareColor);
 gridResizeBtn.addEventListener('click', changeGridSize);
+btnContainer.addEventListener('click', changeCurrentColor);
 
 function getRandomColor() {
   const r = Math.floor(Math.random() * 256);
@@ -10,6 +13,21 @@ function getRandomColor() {
   const b = Math.floor(Math.random() * 256);
   const rgb = `rgb(${r},${g},${b})`;
   return rgb;
+}
+
+function changeCurrentColor(e) {
+  const color = e.target.dataset.color;
+  if (!color) return;
+  currentColor = color;
+}
+
+function getCurrentColor() {
+  if (currentColor === 'black'){
+    const COLOR_BLACK = 'rgb(51,51,51)';
+    return COLOR_BLACK;
+  } else if (currentColor === 'rainbow') {
+    return getRandomColor();
+  }
 }
 
 function createGridSquares(columns, rows) {
@@ -28,10 +46,8 @@ function createGridSquares(columns, rows) {
 
 function changeSquareColor(e) {
   const target = e.target;
-  const COLOR_BLACK = 'rgb(0,0,0)';
-  
   if (!target.classList.contains('row')) return;
-  target.style.backgroundColor = COLOR_BLACK;
+  target.style.backgroundColor = getCurrentColor();
 }
 
 function changeGridSize() {

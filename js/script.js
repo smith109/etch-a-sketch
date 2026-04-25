@@ -13,13 +13,13 @@ function toggleActiveClass(target) {
   target.classList.add('active');
 }
 
-function resetAlphaValue(){
+function resetAlphaValue() {
   const rowDivs = document.querySelectorAll('.row');
   rowDivs.forEach((rowDiv) => rowDiv.dataset.alphaValue = '0');
 }
 
 function changeCurrentColor(e) {
-  const target = e.target
+  const target = e.target;
   const color = e.target.dataset.color;
 
   if (!color) return;
@@ -65,6 +65,11 @@ function applySquareColor(target) {
 
   if (currentColor === 'shader') {
     adjustBrightness(target, 0.1);
+  }
+
+  if (currentColor === 'eraser') {
+    const COLOR_WHITE = 'rgb(247, 245, 245)';
+    target.style.backgroundColor = COLOR_WHITE;
   }
 }
 

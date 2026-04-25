@@ -4,8 +4,9 @@
 }
 
 body {
+  color: #f7f5f5;
   text-align: center;
-  background-color: #f2f2f2;
+  background-color: #2f3c7e;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -15,13 +16,22 @@ h1 {
 
 button {
   border: none;
+  outline: none;
+  color: inherit;
   cursor: pointer;
   font-weight: 600;
-  color: #ffffff;
   padding: 8px 16px;
   border-radius: 5px;
   margin-bottom: 16px;
-  background: #11b8b8;
+  background: #dd4d54;
+}
+
+.btn-container button {
+  margin-right: 16px;
+}
+
+.btn-container button.active {
+  background-color: #42787e;
 }
 
 div.grid-container {
@@ -29,8 +39,9 @@ div.grid-container {
   height: 600px;
   display: flex;
   margin: 0 auto;
-  border: 1px solid #ddd;
-  background-color: #ffffff;
+  margin-bottom: 32px;
+  border: 1px solid #333333;
+  background-color: #f7f5f5;
 }
 
 .grid-container .column {

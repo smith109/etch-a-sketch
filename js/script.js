@@ -7,16 +7,26 @@ gridContainer.addEventListener('mouseover', changeSquareColor);
 gridResizeBtn.addEventListener('click', changeGridSize);
 btnContainer.addEventListener('click', changeCurrentColor);
 
+function toggleActiveClass(target) {
+  const activeElement = document.querySelector('.active');
+  activeElement.classList.remove('active');
+  target.classList.add('active');
+}
+
 function resetAlphaValue(){
   const rowDivs = document.querySelectorAll('.row');
   rowDivs.forEach((rowDiv) => rowDiv.dataset.alphaValue = '0');
 }
 
 function changeCurrentColor(e) {
+  const target = e.target
   const color = e.target.dataset.color;
+
   if (!color) return;
+  if (!target.tagName === 'BUTTON') return;
 
   resetAlphaValue();
+  toggleActiveClass(target);
   currentColor = color;
 }
 

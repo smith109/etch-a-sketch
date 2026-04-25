@@ -28,11 +28,13 @@ function getRandomColor() {
   return rgb;
 }
 
-function darkenSquare(target) {
+function adjustBrightness(target, newAlpha) {
   let alphaValue = target.dataset.alphaValue;
-  alphaValue = Number(alphaValue) + 0.1;
+  alphaValue = Number(alphaValue) + newAlpha;
 
-  if (alphaValue > 1) {
+  if (alphaValue < 0) {
+    alphaValue = 0;
+  } else if (alphaValue > 1) {
     alphaValue = 1;
   }
 
@@ -52,14 +54,19 @@ function applySquareColor(target) {
   }
 
   if (currentColor === 'shader') {
-    darkenSquare(target);
+    adjustBrightness(target, 0.1);
   }
 }
 
 function changeSquareColor(e) {
   const target = e.target;
   if (!target.classList.contains('row')) return;
-  applySquareColor(target);
+
+  if (e.shiftKey && currentColor === 'shader') {
+    adjustBrightness(target, -0.1);
+  } else {
+    applySquareColor(target);
+  }
 }
 
 function createGridSquares(columns, rows) {

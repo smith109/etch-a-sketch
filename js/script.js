@@ -7,6 +7,19 @@ gridContainer.addEventListener('mouseover', changeSquareColor);
 gridResizeBtn.addEventListener('click', changeGridSize);
 btnContainer.addEventListener('click', changeCurrentColor);
 
+function resetAlphaValue(){
+  const rowDivs = document.querySelectorAll('.row');
+  rowDivs.forEach((rowDiv) => rowDiv.dataset.alphaValue = '0');
+}
+
+function changeCurrentColor(e) {
+  const color = e.target.dataset.color;
+  if (!color) return;
+
+  resetAlphaValue();
+  currentColor = color;
+}
+
 function getRandomColor() {
   const r = Math.floor(Math.random() * 256);
   const g = Math.floor(Math.random() * 256);
@@ -15,19 +28,38 @@ function getRandomColor() {
   return rgb;
 }
 
-function changeCurrentColor(e) {
-  const color = e.target.dataset.color;
-  if (!color) return;
-  currentColor = color;
+function darkenSquare(target) {
+  let alphaValue = target.dataset.alphaValue;
+  alphaValue = Number(alphaValue) + 0.1;
+
+  if (alphaValue > 1) {
+    alphaValue = 1;
+  }
+
+  const rgba = `rgba(51,51,51,${alphaValue})`;
+  target.dataset.alphaValue = alphaValue;
+  target.style.backgroundColor = rgba;
 }
 
-function getCurrentColor() {
-  if (currentColor === 'black'){
+function applySquareColor(target) {
+  if (currentColor === 'black') {
     const COLOR_BLACK = 'rgb(51,51,51)';
-    return COLOR_BLACK;
-  } else if (currentColor === 'rainbow') {
-    return getRandomColor();
+    target.style.backgroundColor = COLOR_BLACK;
+  } 
+  
+  if (currentColor === 'rainbow') {
+    target.style.backgroundColor = getRandomColor();
   }
+
+  if (currentColor === 'shader') {
+    darkenSquare(target);
+  }
+}
+
+function changeSquareColor(e) {
+  const target = e.target;
+  if (!target.classList.contains('row')) return;
+  applySquareColor(target);
 }
 
 function createGridSquares(columns, rows) {
@@ -37,17 +69,12 @@ function createGridSquares(columns, rows) {
 
     for (let j = 0; j < rows; j++) {
       const rowDiv = document.createElement('div');
+      rowDiv.dataset.alphaValue = '0';
       rowDiv.classList.add('row');
       columnDiv.appendChild(rowDiv);
       gridContainer.appendChild(columnDiv);
     }
   }
-}
-
-function changeSquareColor(e) {
-  const target = e.target;
-  if (!target.classList.contains('row')) return;
-  target.style.backgroundColor = getCurrentColor();
 }
 
 function changeGridSize() {
